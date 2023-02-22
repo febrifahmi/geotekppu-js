@@ -1,4 +1,4 @@
-const { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass } = require('../geotekppu-js/rmr/rmr__bieniawski1989')
+const { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcRMR89 } = require('../geotekppu-js/rmr/rmr__bieniawski1989')
 
 // Test function CalcR1
 test('Test strength of intact rock material rating (pls) #1', () => {
@@ -22,4 +22,14 @@ test('Test Space of discontinuity rating #1', () => {
 // Test function CalcDiscontinuityClass
 test('Test Classification of discontinuity condition #1', () => {
     expect(CalcDiscontinuityClass(0.9,"None","very_rough","None","unweathered")).toBe(30);
+})
+
+// Test function CalcR5
+test('Test function CalcR5 #1', () => {
+    expect(CalcR5("None",0,"dry")).toBe(15);
+})
+
+// Test function CalcRMR89
+test('Test function CalcRMR89', () => {
+    expect(CalcRMR89(CalcR1("pls",251),CalcR2(92),CalcR3(0.6),CalcDiscontinuityClass(1,0.1,"rough","hl<5","slightly_weathered"),CalcR5("None",0,"dry"))).toBe(87);
 })
