@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="CalcDiscontinuityClass"><span class="type-signature"></span>CalcDiscontinuityClass<span class="signature">(dl, sep, rough, gouge, weather)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="CalcRMRrqdSpacing"><span class="type-signature"></span>CalcRMRrqdSpacing<span class="signature">(joints)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -112,7 +112,7 @@
 
 
 <div class="description">
-    Classification of discontinuity condition.
+    RMR(2+3) RQD and spacing of joints.
 </div>
 
 
@@ -148,7 +148,7 @@
 
         <tr>
             
-                <td class="name"><code>dl</code></td>
+                <td class="name"><code>joints</code></td>
             
 
             <td class="type">
@@ -164,99 +164,7 @@
 
             
 
-            <td class="description last">discontinuity length (persistence) in m (<1m; 1-3m; 3-10m; 10-20m; >20m)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sep</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">separation (aperture) in mm (None; <0.1mm; 0.1-1.0mm; 1-5mm; >5mm)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rough</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">roughness (very_rough; rough; slightly_rough; smooth; slickensided)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gouge</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">infilling (None; hl<5; hl>5; sl<5; sl>5)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weather</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">weathering (unweathered; slightly_weathered; moderately_weathered; highly_weathered; decomposed)</td>
+            <td class="description last">joints per meter</td>
         </tr>
 
     
@@ -297,7 +205,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr__bieniawski1989.js.html">rmr__bieniawski1989.js</a>, <a href="rmr__bieniawski1989.js.html#line105">line 105</a>
+        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -351,7 +259,7 @@
     
 
     
-    <h4 class="name" id="CalcR1"><span class="type-signature"></span>CalcR1<span class="signature">(idx, strength)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="CalcRMRucs"><span class="type-signature"></span>CalcRMRucs<span class="signature">(strengh)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -359,7 +267,7 @@
 
 
 <div class="description">
-    Strength of intact rock material rating.
+    RMR(1) Uniaxial Compressive Strength of intact rock.
 </div>
 
 
@@ -395,30 +303,7 @@
 
         <tr>
             
-                <td class="name"><code>idx</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">selected index either 'pls' for point-loads strength or 'ucs' for uniaxial compressive strength</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>strength</code></td>
+                <td class="name"><code>strengh</code></td>
             
 
             <td class="type">
@@ -434,7 +319,7 @@
 
             
 
-            <td class="description last">strength of intact rock material (in MPa)</td>
+            <td class="description last">ucs of intact rock (in kg/cm2, for consistency it will be converted automatically to MPa)</td>
         </tr>
 
     
@@ -475,7 +360,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr__bieniawski1989.js.html">rmr__bieniawski1989.js</a>, <a href="rmr__bieniawski1989.js.html#line17">line 17</a>
+        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -529,7 +414,7 @@
     
 
     
-    <h4 class="name" id="CalcR2"><span class="type-signature"></span>CalcR2<span class="signature">(drillcoreRQD)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="RMRb"><span class="type-signature"></span>RMRb<span class="signature">(rmr_ucs, rmr_rqd_spacing, discontinuity, groundwater)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -537,7 +422,7 @@
 
 
 <div class="description">
-    Drill core RQD rating.
+    RMRb - Rock Mass Rating basic for classifying rock mass as proposed by Geocontrol (2012) after Bieniawski (1989).
 </div>
 
 
@@ -573,7 +458,7 @@
 
         <tr>
             
-                <td class="name"><code>drillcoreRQD</code></td>
+                <td class="name"><code>rmr_ucs</code></td>
             
 
             <td class="type">
@@ -589,7 +474,76 @@
 
             
 
-            <td class="description last">drill core quality or rock quality designation (in percent)</td>
+            <td class="description last">rating of Uniaxial Compressive Strength rating of intact rock</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rmr_rqd_spacing</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">rating of RMR RQD and spacing of joints</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>discontinuity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">discontinuity condition as proposed in Bieniawski (1989)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groundwater</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">groundwater condition</td>
         </tr>
 
     
@@ -630,162 +584,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr__bieniawski1989.js.html">rmr__bieniawski1989.js</a>, <a href="rmr__bieniawski1989.js.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="CalcR3"><span class="type-signature"></span>CalcR3<span class="signature">(spacing)</span><span class="type-signature"> &rarr; {Number}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Space of discontinuity rating.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>spacing</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">value of rock spacing (in m, float/decimal)</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr__bieniawski1989.js.html">rmr__bieniawski1989.js</a>, <a href="rmr__bieniawski1989.js.html#line79">line 79</a>
+        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line164">line 164</a>
     </li></ul></dd>
     
 
@@ -849,13 +648,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CalcDiscontinuityClass">CalcDiscontinuityClass</a></li><li><a href="global.html#CalcR1">CalcR1</a></li><li><a href="global.html#CalcR2">CalcR2</a></li><li><a href="global.html#CalcR3">CalcR3</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CalcRMRrqdSpacing">CalcRMRrqdSpacing</a></li><li><a href="global.html#CalcRMRucs">CalcRMRucs</a></li><li><a href="global.html#RMRb">RMRb</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Feb 22 2023 18:43:36 GMT+0700 (Western Indonesia Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Feb 23 2023 05:41:24 GMT+0700 (Western Indonesia Time)
 </footer>
 
 <script> prettyPrint(); </script>
