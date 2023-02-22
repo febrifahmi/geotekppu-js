@@ -94,7 +94,7 @@ function CalcR3(spacing){
 
 
 /**
- * 
+ * Classification of discontinuity condition.
  * @param {Number} dl discontinuity length (persistence) in m (<1m; 1-3m; 3-10m; 10-20m; >20m)
  * @param {Any} sep separation (aperture) in mm (None; <0.1mm; 0.1-1.0mm; 1-5mm; >5mm)
  * @param {String} rough roughness (very_rough; rough; slightly_rough; smooth; slickensided)
@@ -103,7 +103,6 @@ function CalcR3(spacing){
  * @returns {Number}
  */
 function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
-    let val_r4 = 0
     let dl_rating = 0
     let sep_rating = 0
     let rough_rating = 0
@@ -122,7 +121,58 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         dl_rating = 0
     }
 
-    return val_r4
+    if(sep == "None"){
+        sep_rating = 6
+    } else if(sep < 0.1){
+        sep_rating = 5
+    } else if(sep >= 0.1 && sep < 1.0){
+        sep_rating = 4
+    } else if(sep >= 1.0 && sep < 5){
+        sep_rating = 1
+    } else if(sep >= 5){
+        sep_rating = 0
+    }
+
+    if(rough == "very_rough"){
+        rough_rating = 6
+    } else if(rough == "rough"){
+        rough_rating = 5
+    } else if(rough == "slightly_rough"){
+        rough_rating = 3
+    } else if(rough == "smooth"){
+        rough_rating = 1
+    } else if(rough == "slickensided"){
+        rough_rating = 0
+    }
+
+    if(gouge == "None"){
+        gouge_rating = 6
+    } else if(gouge == "hl<5"){
+        gouge_rating = 4
+    } else if(gouge == "hl>5"){
+        gouge_rating = 2
+    } else if(gouge == "sl<5"){
+        gouge_rating = 2
+    } else if(gouge == "sl>5"){
+        gouge_rating = 0
+    }
+
+    if(weather == "unweathered"){
+        weather_rating = 6
+    } else if(weather == "slightly_weathered"){
+        weather_rating = 5
+    } else if(weather == "moderately_weathered"){
+        weather_rating = 3
+    } else if(weather == "highly_weathered"){
+        weather_rating = 1
+    } else if(weather == "decomposed"){
+        weather_rating = 0
+    }
+
+    console.log(dl_rating, sep_rating, rough_rating, gouge_rating, weather_rating)
+    let totalrating = dl_rating + sep_rating + rough_rating + gouge_rating + weather_rating
+
+    return totalrating
 }
 
 module.exports = { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass }
