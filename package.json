@@ -1,0 +1,27 @@
+{
+  "name": "geotekppu-js",
+  "version": "0.0.1",
+  "description": "A Node package for simple geotechnic analysis",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/febrifahmi/geotekppu-js.git"
+  },
+  "keywords": [
+    "geotek",
+    "geotechnic",
+    "analysis"
+  ],
+  "author": "Febri Fahmi Hakim and Daru Jaka Sasangka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/febrifahmi/geotekppu-js/issues"
+  },
+  "homepage": "https://github.com/febrifahmi/geotekppu-js#readme",
+  "devDependencies": {
+    "jest": "^29.4.3"
+  }
+}
