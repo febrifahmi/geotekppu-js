@@ -6,11 +6,19 @@ A Node package for simple geotechnic analysis.
 ## Usage
 ### Installation
 
-(to do)
+`npm install geotekppu-js`
 
-### Import and usage
+### How to use
 
-(to do)
+```
+const { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcRMR89 } = require('../geotekppu-js/rmr/rmr__bieniawski1989')
+const { CalcRMRucs, CalcRMRrqdSpacing, RMRb } = require("../geotekppu-js/rmr/rmr_b_geocontrol2012")
+const { CalcF0, CalcFexcavation, CalcICE } = require("../geotekppu-js/rmr/rmr_celada_etal2014")
+
+
+let r1 = CalcR1("pls",16)
+
+```
 
 
 References
