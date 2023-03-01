@@ -415,11 +415,11 @@ How to cite
 -----------
 
 ```
-@software{Sasangka_GeotekPPU_A_python_2023,
+@software{Sasangka_GeotekPPU-JS_A_Node_2023,
 author = {Sasangka, Daru Jaka and Hakim, Febri Fahmi},
 month = {2},
-title = {{GeotekPPU: A python module for geotechnic analysis}},
-url = {https://github.com/febrifahmi/geotekppu},
+title = {{GeotekPPU-JS: A Node module for simple geotechnic analysis}},
+url = {https://github.com/febrifahmi/geotekppu-js},
 version = {latest},
 year = {2023}
 }
