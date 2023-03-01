@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  * @returns {Number} 
  */
 function CalcR1(idx, strength){
-    // let val_r1 = 0;
+    let val_r1 = 0;
     if(idx == "pls"){
         if(strength >= 10){
             val_r1 = 15
