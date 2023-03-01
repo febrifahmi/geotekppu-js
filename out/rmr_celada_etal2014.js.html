@@ -1,4 +1,32 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: rmr_celada_etal2014.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: rmr_celada_etal2014.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
 Copyright (2023) Febri Fahmi Hakim (fahmi_fafa@yahoo.com) and Daru Jaka Sasangka (darujakasasangka@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -18,37 +46,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 function CalcF0(strike_orientation, dip_angle){
     let val_f0 = 0
     if(strike_orientation == "dwd"){
-        if(dip_angle >= 20 && dip_angle < 45){
+        if(dip_angle >= 20 &amp;&amp; dip_angle &lt; 45){
             val_f0 = -2
-        } else if(dip_angle >= 45 && dip_angle <=90){
+        } else if(dip_angle >= 45 &amp;&amp; dip_angle &lt;=90){
             val_f0 = 0
-        } else if(dip_angle < 20){
+        } else if(dip_angle &lt; 20){
             val_f0 = null
         } else if(dip_angle > 90){
             val_f0 = null
         }
     } else if(strike_orientation == "dad"){
-        if(dip_angle >= 20 && dip_angle < 45){
+        if(dip_angle >= 20 &amp;&amp; dip_angle &lt; 45){
             val_f0 = -10
-        } else if(dip_angle >= 45 && dip_angle <=90){
+        } else if(dip_angle >= 45 &amp;&amp; dip_angle &lt;=90){
             val_f0 = -5
-        } else if(dip_angle < 20){
+        } else if(dip_angle &lt; 20){
             val_f0 = null
         } else if(dip_angle > 90){
             val_f0 = null
         }
     } else if(strike_orientation == "parallel"){
-        if(dip_angle >= 20 && dip_angle < 45){
+        if(dip_angle >= 20 &amp;&amp; dip_angle &lt; 45){
             val_f0 = -5
-        } else if(dip_angle >= 45 && dip_angle <=90){
+        } else if(dip_angle >= 45 &amp;&amp; dip_angle &lt;=90){
             val_f0 = -12
-        } else if(dip_angle < 20){
+        } else if(dip_angle &lt; 20){
             val_f0 = null
         } else if(dip_angle > 90){
             val_f0 = null
         }
     } else if(strike_orientation == "irrespective"){
-        if(dip_angle >= 0 && dip_angle <= 20){
+        if(dip_angle >= 0 &amp;&amp; dip_angle &lt;= 20){
             val_f0 = -5
         } else if(dip_angle > 20){
             val_f0 = null
@@ -60,14 +88,14 @@ function CalcF0(strike_orientation, dip_angle){
 
 /**
  * Adjusment factor for RMR considering excavation method (Tunneling Bore Method/TBM or Drill and Blast/D+B).
- * @param {Number} rmrb RMRb rating value before adjustments (for rmrb > 40 and rmrb < 40)
+ * @param {Number} rmrb RMRb rating value before adjustments (for rmrb > 40 and rmrb &lt; 40)
  * @returns {Number}
  */
 function CalcFexcavation(rmrb){
     let val_fe = 0
-    if(rmrb < 40 && rmrb >= 0){
+    if(rmrb &lt; 40 &amp;&amp; rmrb >= 0){
         val_fe = 1 + (2 * (rmrb / 100)**2)
-    } else if(rmrb >= 40 && rmrb <= 100){
+    } else if(rmrb >= 40 &amp;&amp; rmrb &lt;= 100){
         val_fe = 1.32 - (Math.sqrt(rmrb-40)/25)
     }
     return val_fe
@@ -86,7 +114,7 @@ function CalcFexcavation(rmrb){
 function CalcICE(rmrb,ucs,k0,H,F){
     let val_ice = 0
     const e = 2.71828183
-    if(k0 <= 1){
+    if(k0 &lt;= 1){
         val_ice = ((3704*ucs*(e**((rmrb-100)/24)))/((3-k0)*H))*F
     } else if(k0 >1){
         val_ice = ((3704*ucs*(e**((rmrb-100)/24)))/(((3*k0)-1)*H))*F
@@ -102,9 +130,9 @@ function CalcICE(rmrb,ucs,k0,H,F){
  */
 function CalcFStressStrain(ice){
     let val_fs = 0
-    if(ice < 15){
+    if(ice &lt; 15){
         val_fs = 1.3
-    } else if(ice >= 15 && ice < 70){
+    } else if(ice >= 15 &amp;&amp; ice &lt; 70){
         val_fs = (2.3*Math.sqrt((100-ice)))/(7.1+Math.sqrt((100-ice)))
     } else if(ice >= 70){
         val_fs = 1
@@ -137,4 +165,26 @@ function RMR14(rmrb_adj, val_fe, val_fs){
     return +rmr14.toFixed(2) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
 }
 
-module.exports = { CalcF0, CalcFexcavation, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 }
+module.exports = { CalcF0, CalcFexcavation, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CalcF0">CalcF0</a></li><li><a href="global.html#CalcFStressStrain">CalcFStressStrain</a></li><li><a href="global.html#CalcFexcavation">CalcFexcavation</a></li><li><a href="global.html#CalcICE">CalcICE</a></li><li><a href="global.html#RMR14">RMR14</a></li><li><a href="global.html#RMRbAdj">RMRbAdj</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 01 2023 20:59:02 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

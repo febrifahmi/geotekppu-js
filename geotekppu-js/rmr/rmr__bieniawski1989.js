@@ -169,7 +169,7 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         weather_rating = 0
     }
 
-    console.log(dl_rating, sep_rating, rough_rating, gouge_rating, weather_rating)
+    // console.log(dl_rating, sep_rating, rough_rating, gouge_rating, weather_rating)
     let totalrating = dl_rating + sep_rating + rough_rating + gouge_rating + weather_rating
 
     return totalrating

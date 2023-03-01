@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="CalcRMRrqdSpacing"><span class="type-signature"></span>CalcRMRrqdSpacing<span class="signature">(joints)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="AdjustedR1ucs"><span class="type-signature"></span>AdjustedR1ucs<span class="signature">(strength)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -112,7 +112,7 @@
 
 
 <div class="description">
-    RMR(2+3) RQD and spacing of joints.
+    Adjusted R1 (adjusted uniaxial compressive rock mass strength incorporating the influence of ground water weakening and temperature environment on deep located excavation project).The equation of adjusted R1 proposed by Tong et.al (2022) is:if strength (x) <= 250 MPa -> R1 = ((0.6343*math.log(x,10)) - 0.3627)if strength (x) > 250 -> R1 = 15
 </div>
 
 
@@ -148,7 +148,7 @@
 
         <tr>
             
-                <td class="name"><code>joints</code></td>
+                <td class="name"><code>strength</code></td>
             
 
             <td class="type">
@@ -164,7 +164,7 @@
 
             
 
-            <td class="description last">joints per meter</td>
+            <td class="description last">uniaxial compressive strength test result of intact rock material/rock mass strength (in MPa)</td>
         </tr>
 
     
@@ -205,7 +205,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line47">line 47</a>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -259,7 +259,7 @@
     
 
     
-    <h4 class="name" id="CalcRMRucs"><span class="type-signature"></span>CalcRMRucs<span class="signature">(strengh)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="AdjustedR2"><span class="type-signature"></span>AdjustedR2<span class="signature">(rqd)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -267,7 +267,7 @@
 
 
 <div class="description">
-    RMR(1) Uniaxial Compressive Strength of intact rock.
+    Adjusted R2 - adjustment of rock quality designation rating.
 </div>
 
 
@@ -303,7 +303,7 @@
 
         <tr>
             
-                <td class="name"><code>strengh</code></td>
+                <td class="name"><code>rqd</code></td>
             
 
             <td class="type">
@@ -319,7 +319,7 @@
 
             
 
-            <td class="description last">ucs of intact rock (in kg/cm2, for consistency it will be converted automatically to MPa)</td>
+            <td class="description last">RQD rating/value (0-100).</td>
         </tr>
 
     
@@ -360,7 +360,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line21">line 21</a>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -414,7 +414,7 @@
     
 
     
-    <h4 class="name" id="RMRb"><span class="type-signature"></span>RMRb<span class="signature">(rmr_ucs, rmr_rqd_spacing, discontinuity, groundwater)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id="AdjustedR3"><span class="type-signature"></span>AdjustedR3<span class="signature">(spacing)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -422,7 +422,7 @@
 
 
 <div class="description">
-    RMRb - Rock Mass Rating basic for classifying rock mass as proposed by Geocontrol (2012) after Bieniawski (1989).
+    Adjusted R3 - adjustment of rating value based on joint spacing.
 </div>
 
 
@@ -458,7 +458,7 @@
 
         <tr>
             
-                <td class="name"><code>rmr_ucs</code></td>
+                <td class="name"><code>spacing</code></td>
             
 
             <td class="type">
@@ -474,76 +474,7 @@
 
             
 
-            <td class="description last">rating of Uniaxial Compressive Strength rating of intact rock</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rmr_rqd_spacing</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">rating of RMR RQD and spacing of joints</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>discontinuity</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">discontinuity condition as proposed in Bieniawski (1989)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>groundwater</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">groundwater condition</td>
+            <td class="description last">space of discontinuity (in m)</td>
         </tr>
 
     
@@ -584,7 +515,719 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rmr_b_geocontrol2012.js.html">rmr_b_geocontrol2012.js</a>, <a href="rmr_b_geocontrol2012.js.html#line164">line 164</a>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="CalcR6"><span class="type-signature"></span>CalcR6<span class="signature">(cat, favorability)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Adjustment rating for tunnel, foundation and slope based of favorability.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">category (tunnel, foundation, slope) (type String)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>favorability</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">favorability opstion (vfav -> very favorable; fav -> favorable; fair; unfav -> unfavorable; vunfav: very unfavorable)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line81">line 81</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="CalcR7"><span class="type-signature"></span>CalcR7<span class="signature">(ri, per_i)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Geostress correction / strength-stress ratio index / in-situ stress modification index (R7) as proposed in Tong et.al (2022) (a ration to measure the risk of rock bursts). Denoted by the equation:R7 = Sum of (Ri x Percentage of (i))Where Ri for specific rock burst grade:I (no rock burst) --> Ri = 0II (slight rock burst) --> Ri = -4III (moderate rock burst) --> Ri = -8IV (severe rock burst) --> Ri = -12
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">score of Ri based on rock burst grade</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>per_i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">percentage of different rock burst grade</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="CalcR8"><span class="type-signature"></span>CalcR8<span class="signature">(perm_co)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Rock Mass Permeability Index as main factor influence the water seepage in rocks material.This value defined as:R8 = -12 x (1 - Perm(<=10^-9m/s))
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>perm_co</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">coefficient of permeability value and it should within the range <=10^-9 m/s. If permeability coefficient value == <=10^-9 m/s == 1, then R8 = -12 x (1-1) = 0. Otherwise, when permeability coefficient value == <=10^-9 m/s == 0, R8 is -12. The coefficient is between 0 and 1.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="CalcR9"><span class="type-signature"></span>CalcR9<span class="signature">(pH, tds, cl)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    The groundwater chemistry index as proposed by Tong et.al (2022).
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">pH (acidity)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">total dissolved solids (g/L)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">non/negatively charged chlorine (g/L)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rmr_hlw_tong_etal2022.js.html">rmr_hlw_tong_etal2022.js</a>, <a href="rmr_hlw_tong_etal2022.js.html#line165">line 165</a>
     </li></ul></dd>
     
 
@@ -648,13 +1291,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CalcRMRrqdSpacing">CalcRMRrqdSpacing</a></li><li><a href="global.html#CalcRMRucs">CalcRMRucs</a></li><li><a href="global.html#RMRb">RMRb</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdjustedR1ucs">AdjustedR1ucs</a></li><li><a href="global.html#AdjustedR2">AdjustedR2</a></li><li><a href="global.html#AdjustedR3">AdjustedR3</a></li><li><a href="global.html#CalcR6">CalcR6</a></li><li><a href="global.html#CalcR7">CalcR7</a></li><li><a href="global.html#CalcR8">CalcR8</a></li><li><a href="global.html#CalcR9">CalcR9</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Feb 23 2023 05:41:24 GMT+0700 (Western Indonesia Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 01 2023 20:59:43 GMT+0700 (Western Indonesia Time)
 </footer>
 
 <script> prettyPrint(); </script>
