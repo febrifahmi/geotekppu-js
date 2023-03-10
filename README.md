@@ -3,7 +3,7 @@
 
 A Node package for simple geotechnic analysis.
 
-This NPM package is developed based on [1], [2] and [3].
+This NPM package is developed based on [1], [2], [3], [4].
 
 ## Usage
 ### Installation
@@ -400,6 +400,96 @@ Return:
 val_r9: value of R9
 ```
 
+### Slope Mass Rating (SMR)
+
+Slope Mass Rating is used to rate the slope for construction or other activities.
+
+```
+Correction factor F1 which depends on parallelism (denoted by "A") between discontinuity dip direction (alpha j) and slope dip (alpha s)
+
+if ftype: P, then A = |alpha j - alpha s| OR absolute value of alpha j minus alpha s
+if ftype: T, the A = |alpha j - alpha s - 180| OR absolute value of alpha j minus alpha s minus 180
+
+Parameters:
+-----------
+
+- ftype: type of failure (P = planar, T = Toppling)
+- dis_dd: discontinuity dip direction
+- slope_d: slope dip
+
+
+Return:
+-------
+
+val_f1: value of correction factor F1
+```
+
+```
+Correction factor F2 related to the probability of discontinuity shear strength (B) (Romana, 1993), depends on the discontinuity dip. In case of failure type Planar: B = beta j ; in case of Toppling: B = 1.0
+
+Parameters:
+-----------
+
+- ftype: type of failure (P = planar, T = Toppling)
+- dis_dip: discontinuity dip angle
+
+
+Return:
+-------
+
+val_f2: value of correction factor F2
+```
+
+```
+Correction factor F3 indicates relationship (C) between slope (beta s) discontinuity dips (beta j) that is probability of the discontinuity to outcrop on the slope face (Romana, 1993) for planar failure (Romana, 2015)
+
+
+Parameters:
+-----------
+
+- ftype: type of failure (P = planar, T = Toppling)
+- slope: slope
+- ddips: discontinuity dips
+
+Return:
+-------
+
+val_f3: value of correction factor F3
+```
+
+```
+Correction factor F4 considering the excavation method.
+
+Parameters:
+-----------
+
+- method: excavation methods option ("pre": Presplitting; "sb": Smooth blasting; "ns": Natural slope; "bm": Blasting or mechanical)
+
+
+Return:
+-------
+
+val_f4: value of correction factor F4
+```
+
+```
+Slope Mass Rating (SMR) as proposed by Romana (1985, 2015).
+
+Parameters:
+-----------
+
+- rmrb: RMR basic
+- F1: correction factor F1 regarding parallelism
+- F2: correction factor F2 regarding probability of discontinuity shear strength
+- F3: correction factor F3 regarding 
+
+Return:
+-------
+
+smr: Slope mass rating value
+```
+
+
 
 References
 ----------
@@ -410,6 +500,8 @@ References
 
 [3] Y. Tong, Y. Yue, Z. Huang, L. Zhu, Z. Li, and W. Zhang, “Modified RMR Rock Mass Classification System for Preliminary Selection of Potential Sites of High-Level Radioactive Waste Disposal Engineering,” Sustain., vol. 14, no. 23, pp. 1–17, 2022, doi: 10.3390/su142315596.
 
+[4] Romana, M., Tomás, R., Serón, J.B. (2015). Slope Mass Rating (SMR) geomechanics classification: thirty years review. ISRM Congress 2015 Proceedings - International Symposium on Rock Mechanics, Quebec Canada, May 10 to 13 2015. ISBN: 978-1-926872-25-4, 10 pp.
+
 
 How to cite
 -----------
@@ -417,7 +509,7 @@ How to cite
 ```
 @software{Sasangka_GeotekPPU-JS_A_Node_2023,
 author = {Sasangka, Daru Jaka and Hakim, Febri Fahmi},
-month = {2},
+month = {3},
 title = {{GeotekPPU-JS: A Node module for simple geotechnic analysis}},
 url = {https://github.com/febrifahmi/geotekppu-js},
 version = {latest},
