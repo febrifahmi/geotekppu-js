@@ -19,7 +19,7 @@ function CalcR1(idx, strength){
     if(idx == "pls"){
         if(strength >= 10){
             val_r1 = 15
-        } else if(strength < 10 && strengh >= 4){
+        } else if(strength < 10 && strength >= 4){
             val_r1 = 12
         } else if(strength < 4 && strength >= 2){
             val_r1 = 7
