@@ -19,12 +19,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  */
 function AdjustedR1ucs(strength){
     let val_r1_adj = 0
-    if(strength <= 250){
+    if(strength <= 250 && strength >=0){
         val_r1_adj = 10**((0.6343*Math.log10(strength))-0.3627)
     } else if(strength > 250){
         val_r1_adj = 15
+    } else {
+        val_r1_adj = null
     }
-    return +val_r1_adj.toFixed(4)
+    if(val_r1_adj != null){
+        return +val_r1_adj.toFixed(4)
+    } else {
+        return val_r1_adj
+    }
 }
 
 
@@ -35,7 +41,7 @@ function AdjustedR1ucs(strength){
  */
 function AdjustedR2(rqd){
     let val_r2_adj = 0
-    if(rqd < 100){
+    if(rqd < 100 && rqd >= 0){
         val_r2_adj = (0.1958*rqd) + 0.6484
     } else if(rqd == 100){
         val_r2_adj = 20
@@ -57,7 +63,7 @@ function AdjustedR2(rqd){
  */
 function AdjustedR3(spacing){
     let val_r3_adj = 0
-    if(spacing < 2){
+    if(spacing < 2 && spacing >=0){
         val_r3_adj = 10**((0.1799*((Math.log10(spacing))**3)) + (0.3834*((Math.log10(spacing))**2)) + (0.4462*Math.log10(spacing)) + 1.125)
     } else if(spacing >= 2){
         val_r3_adj = 20
@@ -91,6 +97,8 @@ function CalcR6(cat,favorability){
             val_r6 = -10
         } else if(favorability == "vunfav"){
             val_r6 = -12
+        } else {
+            val_r6 = null
         }
     } else if(cat == "foundation"){
         if(favorability == "vfav"){
@@ -103,6 +111,8 @@ function CalcR6(cat,favorability){
             val_r6 = -15
         } else if(favorability == "vunfav"){
             val_r6 = -25
+        } else {
+            val_r6 = null
         }
     } else if(cat == "slope"){
         if(favorability == "vfav"){
@@ -115,7 +125,11 @@ function CalcR6(cat,favorability){
             val_r6 = -50
         } else if(favorability == "vunfav"){
             val_r6 = -60
+        } else {
+            val_r6 = null
         }
+    } else {
+        val_r6 = null
     }
     return val_r6
 }
@@ -136,7 +150,12 @@ function CalcR6(cat,favorability){
  * @returns {Number}
  */
 function CalcR7(ri,per_i){
-    let val_r7 = ri * per_i
+    let val_r7 = 0
+    if(per_i >= 0 && per_i <= 100){
+        val_r7 = ri * per_i
+    } else {
+        val_r7 = null
+    }
     return val_r7
 }
 
@@ -150,8 +169,17 @@ function CalcR7(ri,per_i){
  * @returns {Number}
  */
 function CalcR8(perm_co){
-    let val_r8 = -12 * (1 - perm_co)
-    return +val_r8.toFixed(2)
+    let val_r8 = 0
+    if(perm_co <= 1 && perm_co >= 0){
+        val_r8 = -12 * (1 - perm_co)
+    } else {
+        val_r8 = null
+    }
+    if(val_r8 != null){
+        return +val_r8.toFixed(2)
+    } else {
+        return val_r8
+    }
 }
 
 
@@ -184,4 +212,28 @@ function CalcR9(pH,tds,cl){
     return val_r9
 }
 
-module.exports = { AdjustedR1ucs, AdjustedR2, AdjustedR3, CalcR6, CalcR7, CalcR8, CalcR9 }
+
+/**
+ * Modified Rock Classification System RMRHLW for HLW Geological Disposal as proposed in Tong et.al (2022).
+ * @param {Number} r1 adjusted uniaxial compressive rock mass strength incorporating the influence of ground water weakening and temperature environment on deep located excavation project.
+ * @param {Number} r2 adjustment of rock quality designation rating.
+ * @param {Number} r3 adjustment of rating value based on joint spacing.
+ * @param {Number} r4 classification of discontinuity condition as in RMR89.
+ * @param {Number} r5 groundwater condition as in RMR89.
+ * @param {Number} r6 adjustment rating for tunnel, foundation and slope based of favorability.
+ * @param {Number} r7 geostress correction/strength-stress ratio index/in-situ stress modification index.
+ * @param {Number} r8 Rock Mass Permeability Index.
+ * @param {Number} r9 groundwater chemistry index.
+ * @returns {Number}
+ */
+function RMRhlw(r1,r2,r3,r4,r5,r6,r7,r8,r9){
+    let rmrhlw = 0
+    if(r1 != null && r2 != null && r3 != null && r4 != null && r5 != null && r6 != null && r7 != null && r8 != null && r9 != null){
+        rmrhlw = r1 + r2 + r3 + r4 + r5 + r6 + r7 + r8 + r9
+    } else {
+        rmrhlw = null
+    }
+    return rmrhlw
+}
+
+module.exports = { AdjustedR1ucs, AdjustedR2, AdjustedR3, CalcR6, CalcR7, CalcR8, CalcR9, RMRhlw }

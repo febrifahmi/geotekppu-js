@@ -20,8 +20,17 @@ var e = 2.71828183
  * @returns {Number}
  */
 function RMR02pls(l, strength, G, rj, rd) {
-    let rmr02pls = (20 * (1 + (0.1 * l)) * e ** (-0.1 * l)) - (15 * Math.log10(l)) + (1.670 * strength) - (2.9 * Math.log10(G)) + 35.67 + (rj - rd)
-    return +rmr02pls.toFixed(4)
+    let rmr02pls = 0
+    if (l != null && strength != null && G != null && rj != null && rd != null) {
+        rmr02pls = (20 * (1 + (0.1 * l)) * e ** (-0.1 * l)) - (15 * Math.log10(l)) + (1.670 * strength) - (2.9 * Math.log10(G)) + 35.67 + (rj - rd)
+    } else {
+        rmr02pls = null
+    }
+    if (rmr02pls != null) {
+        return +rmr02pls.toFixed(4)
+    } else {
+        return rmr02pls
+    }
 }
 
 
@@ -34,9 +43,18 @@ function RMR02pls(l, strength, G, rj, rd) {
  * @param {Number} rd joint orientation
  * @returns {Number}
  */
-function RMR02ucs(l, strength, G, rj, rd){
-    let rmr02ucs = (20 * (1 + (0.1 * l)) * e ** (-0.1 * l)) - (15 * Math.log10(l)) + (0.075 * strength) - (2.9 * Math.log10(G)) + 34.00 + (rj - rd)
-    return +rmr02ucs.toFixed(4)
+function RMR02ucs(l, strength, G, rj, rd) {
+    let rmr02ucs = 0
+    if (l != null && strength != null && G != null && rj != null && rd != null) {
+        rmr02ucs = (20 * (1 + (0.1 * l)) * e ** (-0.1 * l)) - (15 * Math.log10(l)) + (0.075 * strength) - (2.9 * Math.log10(G)) + 34.00 + (rj - rd)
+    } else {
+        rmr02ucs = null
+    }
+    if(rmr02ucs != null){
+        return +rmr02ucs.toFixed(4)
+    } else {
+        return rmr02ucs
+    }
 }
 
 module.exports = { RMR02pls, RMR02ucs }

@@ -25,8 +25,10 @@ function CalcR1(idx, strength){
             val_r1 = 7
         } else if(strength < 2 && strength >= 1){
             val_r1 = 4
+        } else if(strength < 1 && strength >= 0) {
+            val_r1 = "For value lower than 1 MPa, please proceed with Uniaxial Compressive Strength (ucs) idx"
         } else {
-            val_r1 = "For value lower than 1 MPa, please proceed with Uniaxial Compressive Strength Test"
+            val_r1 = null
         }
     } else if(idx == "ucs"){
         if(strength >= 250){
@@ -41,8 +43,10 @@ function CalcR1(idx, strength){
             val_r1 = 2
         } else if(strength < 5 && strength >= 1){
             val_r1 = 1
-        } else if(strength < 1){
+        } else if(strength < 1 && strength >= 0){
             val_r1 = 0
+        } else {
+            val_r1 = null
         }
     }
     return val_r1
@@ -64,8 +68,10 @@ function CalcR2(drillcoreRQD){
         val_r2 = 13
     } else if(drillcoreRQD < 50 && drillcoreRQD >= 25){
         val_r2 = 8
-    } else if(drillcoreRQD < 25){
+    } else if(drillcoreRQD < 25 && drillcoreRQD >= 0){
         val_r2 = 3
+    } else {
+        val_r2 = null
     }
     return val_r2 
 }
@@ -86,8 +92,10 @@ function CalcR3(spacing){
         val_r3 = 10
     } else if(0.2 > spacing >= 0.06){
         val_r3 = 8
-    } else if(spacing < 0.06){
+    } else if(spacing < 0.06 && spacing >= 0){
         val_r3 = 5
+    } else {
+        val_r3 = null
     }
     return val_r3
 }
@@ -119,11 +127,13 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         dl_rating = 1
     } else if(dl > 20){
         dl_rating = 0
+    } else {
+        dl_rating = null
     }
 
     if(sep == "None"){
         sep_rating = 6
-    } else if(sep < 0.1){
+    } else if(sep < 0.1 && sep >= 0){
         sep_rating = 5
     } else if(sep >= 0.1 && sep < 1.0){
         sep_rating = 4
@@ -131,6 +141,8 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         sep_rating = 1
     } else if(sep >= 5){
         sep_rating = 0
+    } else {
+        sep_rating = null
     }
 
     if(rough == "very_rough"){
@@ -143,6 +155,8 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         rough_rating = 1
     } else if(rough == "slickensided"){
         rough_rating = 0
+    } else {
+        rough_rating = null
     }
 
     if(gouge == "None"){
@@ -155,6 +169,8 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         gouge_rating = 2
     } else if(gouge == "sl>5"){
         gouge_rating = 0
+    } else {
+        gouge_rating = null
     }
 
     if(weather == "unweathered"){
@@ -167,10 +183,17 @@ function CalcDiscontinuityClass(dl, sep, rough, gouge, weather){
         weather_rating = 1
     } else if(weather == "decomposed"){
         weather_rating = 0
+    } else {
+        weather_rating = null
     }
 
     // console.log(dl_rating, sep_rating, rough_rating, gouge_rating, weather_rating)
-    let totalrating = dl_rating + sep_rating + rough_rating + gouge_rating + weather_rating
+    let totalrating = 0
+    if(dl_rating != null && sep_rating != null && rough_rating != null && gouge_rating != null && weather_rating != null){
+        totalrating = dl_rating + sep_rating + rough_rating + gouge_rating + weather_rating
+    } else {
+        totalrating = null
+    }
 
     return totalrating
 }
@@ -195,6 +218,8 @@ function CalcR5(inflow, wpress, cond){
         val_r5 = 4
     } else if(inflow > 125 && wpress > 0.5 && cond == "flowing"){
         val_r5 = 0
+    } else {
+        val_r5 = null
     }
     return val_r5
 }
@@ -210,7 +235,12 @@ function CalcR5(inflow, wpress, cond){
  * @returns {Number}
  */
 function CalcRMR89(r1, r2, r3, discontinuity_class, r5){
-    let rmr89 = r1 + r2 + r3 + discontinuity_class + r5
+    let rmr89 = 0
+    if(r1 != null && r2 != null && r3 != null && discontinuity_class != null && r5 != null){
+        rmr89 = r1 + r2 + r3 + discontinuity_class + r5
+    } else {
+        rmr89 = null
+    }
     return rmr89
 }
 
