@@ -69,6 +69,8 @@ function CalcFexcavation(rmrb){
         val_fe = 1 + (2 * (rmrb / 100)**2)
     } else if(rmrb >= 40 && rmrb <= 100){
         val_fe = 1.32 - (Math.sqrt(rmrb-40)/25)
+    } else {
+        val_fe = null
     }
     return val_fe
 }
@@ -86,10 +88,12 @@ function CalcFexcavation(rmrb){
 function CalcICE(rmrb,ucs,k0,H,F){
     let val_ice = 0
     const e = 2.71828183
-    if(k0 <= 1){
+    if(k0 <= 1 && k0 >= 0){
         val_ice = ((3704*ucs*(e**((rmrb-100)/24)))/((3-k0)*H))*F
     } else if(k0 >1){
         val_ice = ((3704*ucs*(e**((rmrb-100)/24)))/(((3*k0)-1)*H))*F
+    } else {
+        val_ice = null
     }
     return +val_ice.toFixed(4) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
 }
@@ -102,12 +106,14 @@ function CalcICE(rmrb,ucs,k0,H,F){
  */
 function CalcFStressStrain(ice){
     let val_fs = 0
-    if(ice < 15){
+    if(ice < 15 && ice >= 0){
         val_fs = 1.3
     } else if(ice >= 15 && ice < 70){
         val_fs = (2.3*Math.sqrt((100-ice)))/(7.1+Math.sqrt((100-ice)))
     } else if(ice >= 70){
         val_fs = 1
+    } else {
+        val_fs = null
     }
     return +val_fs.toFixed(4) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
 }
@@ -120,7 +126,10 @@ function CalcFStressStrain(ice){
  * @returns {Number}
  */
 function RMRbAdj(rmrb,f0){
-    let rmradj = rmrb + f0
+    let rmradj = 0
+    if(rmrb != null && f0 != null){
+        rmradj = rmrb + f0
+    }
     return rmradj
 }
 
@@ -133,8 +142,17 @@ function RMRbAdj(rmrb,f0){
  * @returns {Number}
  */
 function RMR14(rmrb_adj, val_fe, val_fs){
-    let rmr14 = rmrb_adj * val_fe * val_fs
-    return +rmr14.toFixed(2) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
+    let rmr14 = 0
+    if(rmrb_adj != null && val_fe != null && val_fs != null){
+        rmr14 = rmrb_adj * val_fe * val_fs
+    } else {
+        rmr14 = null
+    }
+    if(rmr14 != null){
+        return +rmr14.toFixed(2) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
+    } else {
+        return rmr14
+    }
 }
 
 module.exports = { CalcF0, CalcFexcavation, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 }

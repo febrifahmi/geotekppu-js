@@ -15,12 +15,12 @@ const convfactor = 0.0980665
 
 /**
  * RMR(1) Uniaxial Compressive Strength of intact rock.
- * @param {Number} strengh ucs of intact rock (in kg/cm2, for consistency it will be converted automatically to MPa)
+ * @param {Number} strength ucs of intact rock (in kg/cm2, for consistency it will be converted automatically to MPa)
  * @returns {Number}
  */
-function CalcRMRucs(strengh){
+function CalcRMRucs(strength){
     let val_rmr_ucs = 0
-    if(strengh > (2500*convfactor)){
+    if(strength > (2500*convfactor)){
         val_rmr_ucs = 15
     } else if(strength >= (1000*convfactor) && strength <= (2500*convfactor)){
         val_rmr_ucs = 12
@@ -32,8 +32,10 @@ function CalcRMRucs(strengh){
         val_rmr_ucs = 2
     } else if(strength >= (10*convfactor) && strength < (50*convfactor)){
         val_rmr_ucs = 1
-    } else if(strength < (10*convfactor)){
+    } else if(strength < (10*convfactor) && strength >= 0){
         val_rmr_ucs = 0
+    } else {
+        val_rmr_ucs = null
     }
     return val_rmr_ucs
 }
@@ -148,6 +150,8 @@ function CalcRMRrqdSpacing(joints){
         val_rmr_rqd = 0.5
     } else if(joints == 50){
         val_rmr_rqd = 0
+    } else {
+        val_rmr_rqd = null
     }
     return val_rmr_rqd
 }
@@ -162,7 +166,12 @@ function CalcRMRrqdSpacing(joints){
  * @returns {Number}
  */
 function RMRb(rmr_ucs, rmr_rqd_spacing, discontinuity, groundwater){
-    let rmrb = rmr_ucs + rmr_rqd_spacing + discontinuity + groundwater
+    let rmrb = 0
+    if(rmr_ucs != null && rmr_rqd_spacing != null && discontinuity != null && groundwater != null){
+        rmrb = rmr_ucs + rmr_rqd_spacing + discontinuity + groundwater
+    } else {
+        rmrb = null
+    }
     return rmrb
 }
 
