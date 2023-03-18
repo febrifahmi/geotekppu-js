@@ -212,9 +212,9 @@ function CalcR5(inflow, wpress, cond){
         val_r5 = 15
     } else if(inflow < 10 && wpress < 0.1 && cond == "damp"){
         val_r5 = 10
-    } else if(25 >= inflow && inflow >= 10 && 0.2 >= wpress && wpress >= 0.1 && cond == "wet"){
+    } else if(inflow <= 25 && inflow >= 10 && wpress <= 0.2 && wpress >= 0.1 && cond == "wet"){
         val_r5 = 7
-    } else if(125 >= inflow && inflow > 25 && 0.5 >= wpress && wpress >= 0.2 && cond == "dripping"){
+    } else if(inflow <= 125 && inflow > 25 && wpress <= 0.5 && wpress > 0.2 && cond == "dripping"){
         val_r5 = 4
     } else if(inflow > 125 && wpress > 0.5 && cond == "flowing"){
         val_r5 = 0
