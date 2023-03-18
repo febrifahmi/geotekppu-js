@@ -1,5 +1,5 @@
 # GeotekPPU-JS (geotekppu-js)
-![coverage](badge-functions.svg "Function Test Coverage")
+![coveragefunctions](badge-functions.svg "Function Test Coverage")![coveragelines](badge-lines.svg "Lines Test Coverage")
 
 A Node package for simple geotechnic analysis.
 
