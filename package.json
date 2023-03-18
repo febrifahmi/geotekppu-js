@@ -1,6 +1,6 @@
 {
   "name": "geotekppu-js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Node package for simple geotechnic analysis",
   "main": "app.js",
   "scripts": {
