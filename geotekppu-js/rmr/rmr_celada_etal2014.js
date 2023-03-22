@@ -95,7 +95,11 @@ function CalcICE(rmrb,ucs,k0,H,F){
     } else {
         val_ice = null
     }
-    return +val_ice.toFixed(4) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
+    if(val_ice != null){
+        return +val_ice.toFixed(4) // since toFixed() will output/change the value of a float with 4 decimal digits to String, we put + plus sign in front of val_ice to keep its data type as a Number
+    } else {
+        return val_ice
+    }
 }
 
 
@@ -136,7 +140,7 @@ function RMRbAdj(rmrb,f0){
 
 /**
  * RMR14 as proposed by Celada etal (2014) - RMR with three adjusment factors applied.
- * @param {Number} rmrb_adj RMRb adjustment factor fot tunnel orientation 
+ * @param {Number} rmrb_adj RMRb adjustment factor for tunnel orientation 
  * @param {Number} val_fe Fe adjustment factor for excavation
  * @param {Number} val_fs Fs adjustment factor for stress strain
  * @returns {Number}

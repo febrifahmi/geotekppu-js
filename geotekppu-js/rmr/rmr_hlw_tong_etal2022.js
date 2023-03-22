@@ -81,7 +81,7 @@ function AdjustedR3(spacing){
 /**
  * Adjustment rating for tunnel, foundation and slope based of favorability.
  * @param {String} cat category (tunnel, foundation, slope) (type String)
- * @param {String} favorability favorability opstion (vfav -> very favorable; fav -> favorable; fair; unfav -> unfavorable; vunfav: very unfavorable)
+ * @param {String} favorability favorability option (vfav -> very favorable; fav -> favorable; fair; unfav -> unfavorable; vunfav: very unfavorable)
  * @returns {Number}
  */
 function CalcR6(cat,favorability){

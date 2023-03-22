@@ -48,6 +48,8 @@ function CalcR1(idx, strength){
         } else {
             val_r1 = null
         }
+    } else {
+        val_r1 = null
     }
     return val_r1
 }
