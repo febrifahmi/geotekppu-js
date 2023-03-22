@@ -36,6 +36,10 @@ test('Testing function CalcICE #1', () => {
     expect(CalcICE(50,251,2,20,1.3)).toBe(1504.9008);
 })
 
+test('Testing function CalcICE #2', () => {
+    expect(CalcICE('rmrb','ucs','k0','H','F')).toBe(null);
+})
+
 // Testing function CalcFStressStrain
 test('Testing function CalcFStressStrain #1', () => {
     expect(CalcFStressStrain(1504.9008)).toBe(1);

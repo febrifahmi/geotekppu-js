@@ -5,12 +5,16 @@ test('Test strength of intact rock material rating (pls) #1', () => {
     expect(CalcR1("pls",16)).toBe(15);
 })
 
-test('Test strength of intact rock material rating (pls) #1', () => {
+test('Test strength of intact rock material rating (pls) #2', () => {
     expect(CalcR1("pls",5)).toBe(12);
 })
 
-test('Test strength of intact rock material rating (ucs) #1', () => {
+test('Test strength of intact rock material rating (ucs) #3', () => {
     expect(CalcR1("ucs",251)).toBe(15);
+})
+
+test('Test strength of intact rock material rating (pls) #4', () => {
+    expect(CalcR1('plss',15)).toBe(null);
 })
 
 // Test function CalcR2
