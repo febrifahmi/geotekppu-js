@@ -257,6 +257,8 @@ function CalcR5Simple(wcond){
         wpress = ">0.5"
         val_r5 = 0
     } else {
+        inflow = null
+        wpress = null
         val_r5 = null
     }
     return {
