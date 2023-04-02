@@ -228,6 +228,48 @@ function CalcR5(inflow, wpress, cond){
 
 
 /**
+ * Water condition in the point of interest/rock.
+ * @param {*} wcond general conditions of rock (dry, damp, wet, dripping, or flowing)
+ * @returns {Number}
+ */
+function CalcR5Simple(wcond){
+    let val_r5 = 0
+    let inflow = ""
+    let wpress = ""
+    if(wcond == "dry"){
+        inflow = "None"
+        wpress = "0"
+        val_r5 = 15
+    } else if(wcond == "damp"){
+        inflow = "<10"
+        wpress = "<0.1"
+        val_r5 = 10
+    } else if(wcond == "wet"){
+        inflow = "10<=inflow<=25"
+        wpress = "0.1<=wpress<=0.2"
+        val_r5 = 7
+    } else if(wcond == "dripping"){
+        inflow = "25<inflow<=125"
+        wpress = "0.2<inflow<=0.5"
+        val_r5 = 4
+    } else if(wcond == "flowing"){
+        inflow = ">125"
+        wpress = ">0.5"
+        val_r5 = 0
+    } else {
+        inflow = null
+        wpress = null
+        val_r5 = null
+    }
+    return {
+        'inflow': inflow,
+        'wpress': wpress,
+        'val_r5': val_r5
+    }
+}
+
+
+/**
  * Rock Mass Rating (RMR) value calculation as proposed by Bieniawski (1973) to classify rock mass based on 5 classification parameters.
  * @param {Number} r1 strength rating
  * @param {Number} r2 Rock Quality Designation (RQD) rating
@@ -246,4 +288,4 @@ function CalcRMR89(r1, r2, r3, discontinuity_class, r5){
     return rmr89
 }
 
-module.exports = { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcRMR89 }
+module.exports = { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcR5Simple, CalcRMR89 }

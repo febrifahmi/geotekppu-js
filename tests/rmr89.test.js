@@ -1,4 +1,4 @@
-const { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcRMR89 } = require('../geotekppu-js/rmr/rmr__bieniawski1989')
+const { CalcR1, CalcR2, CalcR3, CalcDiscontinuityClass, CalcR5, CalcR5Simple, CalcRMR89 } = require('../geotekppu-js/rmr/rmr__bieniawski1989')
 
 // Test function CalcR1
 test('Test strength of intact rock material rating (pls) #1', () => {
@@ -40,6 +40,28 @@ test('Test function CalcR5 #1', () => {
 test('Test function CalcR5 #2', () => {
     expect(CalcR5(10,0.15,"wet")).toBe(7);
 })
+
+// Test function CalcR5Simple
+test('Test function CalcR5Simple #1', () => {
+    expect(CalcR5Simple('dry')['val_r5']).toBe(15);
+})
+
+test('Test function CalcR5Simple #2', () => {
+    expect(CalcR5Simple('damp')['val_r5']).toBe(10);
+})
+
+test('Test function CalcR5Simple #3', () => {
+    expect(CalcR5Simple('wet')['val_r5']).toBe(7);
+})
+
+test('Test function CalcR5Simple #4', () => {
+    expect(CalcR5Simple('dripping')['val_r5']).toBe(4);
+})
+
+test('Test function CalcR5Simple #5', () => {
+    expect(CalcR5Simple('flowing')['val_r5']).toBe(0);
+})
+
 
 // Test function CalcRMR89
 test('Test function CalcRMR89', () => {

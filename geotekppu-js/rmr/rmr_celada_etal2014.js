@@ -11,8 +11,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /**
  * F0 is adjustment factor for the orientation of tunnel axis with regard to main set of discontinuities.
- * @param {String} strike_orientation orientation of strike to tunnel axis ('dwd' or drive with dip, 'dad' or drive against dip, 'parallel', 'irrespective')
- * @param {Number} dip_angle dip angle (dwd, dad, parallel: 45-90 or 20-45, irrespective: 0-20)
+ * @param {String} strike_orientation orientation of strike to tunnel axis (for perepndicular directly select dwd or dad: 'dwd' or drive with dip, 'dad' or drive against dip, 'parallel', 'irrespective')
+ * @param {Number} dip_angle dip angle (dwd: 20-45 or 45-90, dad: 20-45 or 45-90, parallel: 45-90 or 20-45, irrespective: 0-20)
  * @returns {Number}
  */
 function CalcF0(strike_orientation, dip_angle){
@@ -60,6 +60,7 @@ function CalcF0(strike_orientation, dip_angle){
 
 /**
  * Adjusment factor for RMR considering excavation method (Tunneling Bore Method/TBM or Drill and Blast/D+B).
+ * (deprecated)
  * @param {Number} rmrb RMRb rating value before adjustments (for rmrb > 40 and rmrb < 40)
  * @returns {Number}
  */
@@ -73,6 +74,37 @@ function CalcFexcavation(rmrb){
         val_fe = null
     }
     return val_fe
+}
+
+
+/**
+ * Adjusment factor for RMR considering excavation method (Tunneling Bore Method/TBM or Drill and Blast/D+B).
+ * @param {String} method excavation method ('tbm' for TBM, 'db' for D+B, and 'natm' for NATM method) 
+ * @param {Number} rmrb RMRb rating value before adjustments (for rmrb > 40 and rmrb < 40)
+ * @returns {Number}
+ */
+function CalcFexcavationNew(method,rmrb){
+    let val_fe = 0
+    if(method == 'tbm'){
+        if(rmrb < 40 && rmrb >= 0){
+            val_fe = 1 + (2 * (rmrb / 100)**2)
+        } else if(rmrb >= 40 && rmrb <= 100){
+            val_fe = 1.32 - (Math.sqrt(rmrb-40)/25)
+        } else {
+            val_fe = null
+        }
+    } else if(method == 'db'){
+        val_fe = 1
+    } else if(method == 'natm'){
+        val_fe = 1
+    } else {
+        val_fe = null
+    }
+    if(val_fe!=null){
+        return +val_fe.toFixed(4)
+    } else {
+        return val_fe
+    }
 }
 
 
@@ -159,4 +191,4 @@ function RMR14(rmrb_adj, val_fe, val_fs){
     }
 }
 
-module.exports = { CalcF0, CalcFexcavation, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 }
+module.exports = { CalcF0, CalcFexcavation, CalcFexcavationNew, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 }

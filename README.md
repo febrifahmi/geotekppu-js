@@ -502,6 +502,8 @@ References
 
 [4] Romana, M., Tomás, R., Serón, J.B. (2015). Slope Mass Rating (SMR) geomechanics classification: thirty years review. ISRM Congress 2015 Proceedings - International Symposium on Rock Mechanics, Quebec Canada, May 10 to 13 2015. ISBN: 978-1-926872-25-4, 10 pp.
 
+[5] Z. Şen and B. H. Bahaaeldin, “Modified rock mass classification system by continuous rating,” Eng. Geol., vol. 67, no. 3–4, pp. 269–280, 2003, doi: 10.1016/S0013-7952(02)00185-0.
+
 
 How to cite
 -----------

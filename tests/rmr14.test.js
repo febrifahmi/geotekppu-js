@@ -1,4 +1,4 @@
-const { CalcF0, CalcFexcavation, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 } = require("../geotekppu-js/rmr/rmr_celada_etal2014")
+const { CalcF0, CalcFexcavation, CalcFexcavationNew, CalcICE, CalcFStressStrain, RMRbAdj, RMR14 } = require("../geotekppu-js/rmr/rmr_celada_etal2014")
 
 // Test function CalcF0
 test('Test function CalcF0 #1', () => {
@@ -30,6 +30,28 @@ test('Test function CalcFexcavation #2', () => {
 test('Test function CalcFexcavation #3', () => {
     expect(CalcFexcavation(40)).toBe(1.32);
 })
+
+// Testing function CalcFexcavationNew
+test('Testing function CalcFexcavationNew #1', () => {
+    expect(CalcFexcavationNew('tbm',77)).toBe(1.0767);
+}) 
+
+test('Testing function CalcFexcavationNew #2', () => {
+    expect(CalcFexcavationNew('db',undefined)).toBe(1);
+})
+
+test('Testing function CalcFexcavationNew #2', () => {
+    expect(CalcFexcavationNew('db',78)).toBe(1);
+})
+
+test('Testing function CalcFexcavationNew #3', () => {
+    expect(CalcFexcavationNew('natm', undefined)).toBe(1);
+})
+
+test('Testing function CalcFexcavationNew #3', () => {
+    expect(CalcFexcavationNew('natm', 99)).toBe(1);
+})
+
 
 // Testing function CalcICE
 test('Testing function CalcICE #1', () => {
